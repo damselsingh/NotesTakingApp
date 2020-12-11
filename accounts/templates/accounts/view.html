@@ -1,0 +1,23 @@
+{% extends 'accounts/base.html' %}
+
+{% block body %}
+{{block.super}}
+
+
+<div class="container my-3">
+    <h1>View here!</h1> <hr>
+   <div class="row">
+    <div class="col-md-2 text-left my-3">
+        <a href="{% url 'notes' %}" class="btn btn-info">Go back</a>
+    </div>
+   </div>
+
+   <div class="row">
+    <div class="col text-center mx-auto">
+            <h4>Title: {{forms.title}}</h4> <br>
+            <p>{{forms.takenotes}}</p>
+    </div>
+   </div>
+    
+</div>
+{% endblock body %}

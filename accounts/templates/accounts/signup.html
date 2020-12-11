@@ -1,0 +1,32 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+    {% block body %} 
+    <body style="background-image: url('{% static "accounts/images/notebg.svg" %}'); background-position: center; background-repeat: no-repeat;">
+        <div class="container my-5 mr-auto">
+            <div class="col-md-8">
+           <div class="card">
+            <h4 class="my-2 text-center"><img src="{% static 'accounts/images/noteslogo.svg' %}"></h4>
+                <h1 class="card-title text-center my-2 text-dark">Create an Account</h1>
+                <div class="card-body">
+                    <form action="" method="POST" novalidate>
+                        {% csrf_token %}
+                        {% for forms in form %}
+                        <div class="form-group">
+                           {{forms.label_tag}}
+                           {{forms}} 
+                           <h6 class="text-danger my-2">{{forms.errors|striptags}} </h6>
+                        </div>
+                         {% endfor %}
+                         <h6 class="text-black my-2"> Already have an account? <a href="{% url 'home' %}">Login</a></h6>
+                         <input type="submit" value="Submit" class="btn btn-danger">
+                   </form>
+           </div>
+        
+        </div>
+        </div>
+    </body>
+ 
+
+    {% endblock body %}
+ 
+

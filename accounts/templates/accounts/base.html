@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %} {% endblock title %}
+    <link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css>
+    <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css>
+    <link rel="stylesheet" href="{% static 'accounts/css/styles.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
+   <style>
+     body{
+       padding-bottom: 100px;
+     }
+   </style>
+</head>
+<body>
+    {% block body %}
+     <div class="navbar bg-dark fixed-bottom">
+        <a href="{% url 'notes' %}" class="nav-link" title="dashboard"><i class="fas fa-clipboard fa-2x"></i>
+        <a href="{% url 'takenotes' %}" class="nav-link" title="Create New"><i class="fas fa-plus-square fa-2x"></i></a>
+        <a href="{% url 'yournotes' %}" class="nav-link" title="Your notes"><i class="fas fa-file fa-2x"></i></a>
+        <a href="{% url 'setting' %}" class="nav-link" title="Settings"><i class="fas fa-user-cog fa-2x"></i></a>
+      </div>
+
+    
+             {% endblock body %}
+
+
+<script src=https://code.jquery.com/jquery-3.3.1.slim.min.js></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+<script src=https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% extends 'accounts/base.html' %}
+
+
+{% block body %} 
+  {{block.super}}
+           <div class="container my-3">
+            <h1>Dashboard</h1>
+            <hr>
+             <div class="row">
+              <div class="col-md-5">
+                {% include 'accounts/any.svg' %}
+              </div>
+
+              <div class="col justify-content-end text-center">
+                
+                {% if messages %}
+                {% for message in messages %}
+                <div {% if message.tags %} class="alert alert-{{message.tags}} alert-dismissible fade show" {% endif %}>
+                 <strong>{{message}}</strong> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                {% endfor %}
+                {% endif %}
+                
+              {% if data %}
+              {% for datas in data %}
+                <h5 class="my-2 alert alert-info icon">
+                    {{datas.title}}
+                    <a href="{% url 'update' datas.id %}" title="update"><i class="fas fa-pen ico"></i></a>
+                    <a href="{% url 'delete' datas.id %}" title="delete"><i class="fas fa-trash-alt ico"></i></a>  
+                    <a href="{% url 'view' datas.id %}" title="view"><i class="fas fa-eye ico"></i></a>
+                    <br>               
+                </h5>
+              {% endfor %}
+            {% else %}
+               <div class="col-md-6 col-sm-12 col-xs-12 text-center d-flex justify-content-center">
+                {% include 'accounts/notes.svg' %}
+               </div>
+            {% endif %}
+             </div>
+          </div>
+          
+  </div>
+             </div>
+           </div>
+{% endblock body %}

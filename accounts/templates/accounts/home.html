@@ -1,0 +1,38 @@
+{% extends 'accounts/base.html' %}
+{% load static %}
+{% block title %} <title> </title>{% endblock title %}
+
+{% block body %} 
+<body id="home" style="background-image: url('{% static "accounts/images/notebg.svg" %}'); background-position: center; background-repeat: no-repeat;">
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-7">
+            <h1 class="title display-2"><span class="text-dark">An advance way, <br> to</span>  Write & <br> Save Your <br> Notes.</h1>
+            <h6 class="title mt-4"> <img src="{% static 'accounts/images/mylogo.svg' %}" alt="" height="50px">Created by <span class="text-info">Riya Singh</span> </h6>
+        </div>
+        <div class="col-md-5 text-center justify-content-center mx-auto">
+         <div class="card">
+            <h4 class="mt-3"><img src="{% static 'accounts/images/noteslogo.svg' %}"></h4>
+             <h4 class="card-subtitle mt-2">Welcome back!</h4>
+             <h5 class="card-title my-2 text-info ">Login to Your Account</h5>
+             <div class="card-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{form.as_p}} 
+                    <input class="btn btn-info" type="Submit" value="Login"> 
+                    <h6 class="text-black my-2"> New to Notebook? <a href="{% url 'signup' %}">Create an Account</a></h6>
+                </form>
+
+                <div class="text-center">
+                    <h6><img src="{% static 'accounts/images/mylogo.svg' %}" alt="" height="50px">Created by <span class="text-info">Riya Singh</span> </h6>
+                </div>
+
+             </div>
+         </div>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock body %}
+

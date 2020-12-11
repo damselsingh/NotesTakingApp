@@ -1,0 +1,26 @@
+{% extends 'accounts/base.html' %}
+
+{% block body %}
+{{block.super}}
+<div class="container my-3">
+      <h1>Update Your written notes</h1> <hr>
+     <div class="col text-center mx-auto">
+      <form action="" method="POST">
+            {% csrf_token %}
+              {% for form in forms %}
+                    {{form.label_tag}} <br>
+                    {{form}} <br>
+              {% endfor %}
+              <input type="submit" value="Save" class="btn btn-warning mb-2"> <br>
+              <a href="{% url 'notes' %}" class="btn btn-danger">Go back</a> <br>
+              {% if messages %}
+                    {% for message in messages %}
+                       <h5 {% if message.tags %} class="text-{{message.tags}} alert-{{message.tags}}" {% endif %}>
+                         {{message}}
+                       </h5>
+                    {% endfor %}
+              {% endif %}
+          </form>
+     </div>
+</div>
+  {% endblock body %}
