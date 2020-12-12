@@ -25,7 +25,7 @@ SECRET_KEY = ')ll9l$+g4_fzwh%a6q74!zb&zcg6sx28pkn(1yor%6ah=w2i3*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'https://carry-your-notebook.herokuapp.com/']
 
 
 # Application definition
