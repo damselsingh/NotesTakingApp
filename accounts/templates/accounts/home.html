@@ -19,7 +19,21 @@
              <div class="card-body">
                 <form action="" method="post">
                     {% csrf_token %}
-                    {{form.as_p}} 
+                     {% if form.non_field_errors %}
+                    <ul class="alert alert-danger text-danger">
+                        {% for error in form.non_field_errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    {% for forms in form %}
+                    <div class="form-group">
+                       <strong>{{forms.label_tag}}</strong>
+                       {{forms}} 
+                       <h6 class="text-danger my-2">{{forms.errors|striptags}} </h6>
+                    </div>
+                     {% endfor %}
                     <input class="btn btn-info" type="Submit" value="Login"> 
                     <h6 class="text-black my-2"> New to Notebook? <a href="{% url 'signup' %}">Create an Account</a></h6>
                 </form>
