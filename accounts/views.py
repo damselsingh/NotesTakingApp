@@ -88,20 +88,31 @@ def user_setting(request):
         return HttpResponseRedirect('/')
 
 def data_delete(request, pk):
-    deldata = note.objects.get(id=pk)
-    deldata.delete()
-    return HttpResponseRedirect('/dashboard/')
+    if request.user.is_authenticated:
+        deldata = note.objects.get(id=pk)
+        deldata.delete()
+        return HttpResponseRedirect('/dashboard/')
+    else:
+        return HttpResponseRedirect('/')
 
 def data_update(request, pk):
-    updatedata = note.objects.get(id=pk)
-    forms = noteForm(instance=updatedata)
-    if request.method == 'POST':
-        forms = noteForm(request.POST, instance=updatedata)
-        if forms.is_valid():
-            forms.save()
-            return HttpResponseRedirect('/dashboard/')
-    return render(request, 'accounts/update.html', {'forms': forms})
+    if request.user.is_authenticated:
+        updatedata = note.objects.get(id=pk)
+        forms = noteForm(instance=updatedata)
+        if request.method == 'POST':
+            forms = noteForm(request.POST, instance=updatedata)
+            if forms.is_valid():
+                forms.save()
+                return HttpResponseRedirect('/dashboard/')
+        return render(request, 'accounts/update.html', {'forms': forms})
+    else:
+        return HttpResponseRedirect('/')
+        
 
 def data_views(request, pk):
-    forms = note.objects.get(id=pk)
-    return render(request, 'accounts/view.html', {'forms': forms})
+    if request.user.is_authenticated:
+        forms = note.objects.get(id=pk)
+        return render(request, 'accounts/view.html', {'forms': forms})
+    else:
+        return HttpResponseRedirect('/')
+        
